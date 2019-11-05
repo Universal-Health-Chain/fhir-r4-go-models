@@ -64,11 +64,11 @@ type Observation struct {
 	ValueRatio       *Ratio       `bson:"valueRatio,omitempty" json:"valueRatio,omitempty"`
 	ValueSampledData *SampledData `bson:"valueSampledData,omitempty" json:"valueSampledData,omitempty"`
 	// ValueAttachment  *Attachment      `bson:"valueAttachment,omitempty" json:"valueAttachment,omitempty"`
-	ValueTime        *FHIRDateTime    `bson:"valueTime,omitempty" json:"valueTime,omitempty"`
-	ValueDateTime    *FHIRDateTime    `bson:"valueDateTime,omitempty" json:"valueDateTime,omitempty"`
-	ValuePeriod      *Period          `bson:"valuePeriod,omitempty" json:"valuePeriod,omitempty"`
-	DataAbsentReason *CodeableConcept `bson:"dataAbsentReason,omitempty" json:"dataAbsentReason,omitempty"`
-	Interpretation   *CodeableConcept `bson:"interpretation,omitempty" json:"interpretation,omitempty"`
+	ValueTime        *FHIRDateTime      `bson:"valueTime,omitempty" json:"valueTime,omitempty"`
+	ValueDateTime    *FHIRDateTime      `bson:"valueDateTime,omitempty" json:"valueDateTime,omitempty"`
+	ValuePeriod      *Period            `bson:"valuePeriod,omitempty" json:"valuePeriod,omitempty"`
+	DataAbsentReason *CodeableConcept   `bson:"dataAbsentReason,omitempty" json:"dataAbsentReason,omitempty"`
+	Interpretation   []*CodeableConcept `bson:"interpretation,omitempty" json:"interpretation,omitempty"`
 	// comment is renamed to note in FHIR R4
 	// Comment              string           `bson:"comment,omitempty" json:"comment,omitempty"`
 	Note           string                               `bson:"note,omitempty" json:"note,omitempty"`
@@ -166,5 +166,3 @@ type ObservationComponentComponent struct {
 	Interpretation   *CodeableConcept                     `bson:"interpretation,omitempty" json:"interpretation,omitempty"`
 	ReferenceRange   []ObservationReferenceRangeComponent `bson:"referenceRange,omitempty" json:"referenceRange,omitempty"`
 }
-
-

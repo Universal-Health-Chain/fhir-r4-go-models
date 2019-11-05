@@ -1,8 +1,8 @@
 package models
 
 import (
+	"fhir-r4-go-models/utils"
 	"fmt"
-	"github.com/eug48/fhir/utils"
 )
 
 type Decimal struct {

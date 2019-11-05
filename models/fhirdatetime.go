@@ -1,8 +1,8 @@
 package models
 
 import (
-	"github.com/eug48/fhir/utils"
 	"encoding/json"
+	"fhir-r4-go-models/utils"
 	"fmt"
 	"time"
 
@@ -28,11 +28,11 @@ type FHIRDateTime struct {
 func (f FHIRDateTime) GetBSON() (interface{}, error) {
 
 	// if f.Precision == Timestamp {
-		// return f.Time, nil
+	// return f.Time, nil
 	// }
 
 	bytesForm, err := f.MarshalJSON()
-	stringForm := string(bytesForm[1:len(bytesForm)-1]) // remove JSON quotes
+	stringForm := string(bytesForm[1 : len(bytesForm)-1]) // remove JSON quotes
 	if err != nil {
 		return nil, errors.Wrap(err, "FHIRDateTime.GetBSON: MarshalJSON failed")
 	}
