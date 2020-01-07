@@ -68,7 +68,7 @@ type Observation struct {
 	ValueDateTime    *FHIRDateTime      `bson:"valueDateTime,omitempty" json:"valueDateTime,omitempty"`
 	ValuePeriod      *Period            `bson:"valuePeriod,omitempty" json:"valuePeriod,omitempty"`
 	DataAbsentReason *CodeableConcept   `bson:"dataAbsentReason,omitempty" json:"dataAbsentReason,omitempty"`
-	Interpretation   []*CodeableConcept `bson:"interpretation,omitempty" json:"interpretation,omitempty"`
+	Interpretation   []CodeableConcept `bson:"interpretation,omitempty" json:"interpretation,omitempty"`
 	// comment is renamed to note in FHIR R4
 	// Comment              string           `bson:"comment,omitempty" json:"comment,omitempty"`
 	Note           string                               `bson:"note,omitempty" json:"note,omitempty"`

@@ -40,15 +40,22 @@ type Encounter struct {
 	Class            *Coding                            `bson:"class,omitempty" json:"class,omitempty"`
 	ClassHistory     []EncounterClassHistoryComponent   `bson:"classHistory,omitempty" json:"classHistory,omitempty"`
 	Type             []CodeableConcept                  `bson:"type,omitempty" json:"type,omitempty"`
+	// added serviceType in FHIR R4
+	ServiceType      *CodeableConcept                   `bson:"serviceType,omitempty" json:"serviceType,omitempty"`
 	Priority         *CodeableConcept                   `bson:"priority,omitempty" json:"priority,omitempty"`
 	Subject          *Reference                         `bson:"subject,omitempty" json:"subject,omitempty"`
+	// renamed incomingReferral to
+	BasedOn 		 []Reference                        `bson:"basedOn,omitempty" json:"basedOn,omitempty"`
 	EpisodeOfCare    []Reference                        `bson:"episodeOfCare,omitempty" json:"episodeOfCare,omitempty"`
-	IncomingReferral []Reference                        `bson:"incomingReferral,omitempty" json:"incomingReferral,omitempty"`
 	Participant      []EncounterParticipantComponent    `bson:"participant,omitempty" json:"participant,omitempty"`
-	Appointment      *Reference                         `bson:"appointment,omitempty" json:"appointment,omitempty"`
+	// appointment max cardinality changed from 1 to * in FHIR R4
+	Appointment      []Reference                         `bson:"appointment,omitempty" json:"appointment,omitempty"`
 	Period           *Period                            `bson:"period,omitempty" json:"period,omitempty"`
 	Length           *Quantity                          `bson:"length,omitempty" json:"length,omitempty"`
-	Reason           []CodeableConcept                  `bson:"reason,omitempty" json:"reason,omitempty"`
+	// reason renamed to reasonCode in FHIR R4
+	ReasonCode       []CodeableConcept                  `bson:"reasonCode,omitempty" json:"reasonCode,omitempty"`
+	// added reasonReference in FHIR R4
+	ReasonReference 		 []Reference                `bson:"reasonReference,omitempty" json:"reasonReference,omitempty"`
 	Diagnosis        []EncounterDiagnosisComponent      `bson:"diagnosis,omitempty" json:"diagnosis,omitempty"`
 	Account          []Reference                        `bson:"account,omitempty" json:"account,omitempty"`
 	Hospitalization  *EncounterHospitalizationComponent `bson:"hospitalization,omitempty" json:"hospitalization,omitempty"`
@@ -124,7 +131,8 @@ type EncounterParticipantComponent struct {
 type EncounterDiagnosisComponent struct {
 	BackboneElement `bson:",inline"`
 	Condition       *Reference       `bson:"condition,omitempty" json:"condition,omitempty"`
-	Role            *CodeableConcept `bson:"role,omitempty" json:"role,omitempty"`
+	// role renamed to use in FHIR r4
+	Use            *CodeableConcept `bson:"use,omitempty" json:"use,omitempty"`
 	Rank            *uint32          `bson:"rank,omitempty" json:"rank,omitempty"`
 }
 
@@ -145,5 +153,7 @@ type EncounterLocationComponent struct {
 	BackboneElement `bson:",inline"`
 	Location        *Reference `bson:"location,omitempty" json:"location,omitempty"`
 	Status          string     `bson:"status,omitempty" json:"status,omitempty"`
+	// physicalType added in FHIR r4
+	PhysicalType    *CodeableConcept `bson:"physicalType,omitempty" json:"physicalType,omitempty"`
 	Period          *Period    `bson:"period,omitempty" json:"period,omitempty"`
 }
