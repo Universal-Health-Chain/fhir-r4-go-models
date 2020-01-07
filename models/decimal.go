@@ -1,8 +1,9 @@
 package models
 
 import (
-	"fhir-r4-go-models/utils"
 	"fmt"
+
+	"github.com/Universal-Health-Chain/fhir-r4-go-models/utils"
 )
 
 type Decimal struct {

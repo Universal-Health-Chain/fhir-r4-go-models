@@ -2,9 +2,10 @@ package models
 
 import (
 	"encoding/json"
-	"fhir-r4-go-models/utils"
 	"fmt"
 	"time"
+
+	"github.com/Universal-Health-Chain/fhir-r4-go-models/utils"
 
 	"github.com/pkg/errors"
 	"gopkg.in/mgo.v2/bson"

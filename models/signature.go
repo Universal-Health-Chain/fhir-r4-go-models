@@ -27,12 +27,24 @@
 package models
 
 type Signature struct {
-	Type                []Coding      `bson:"type,omitempty" json:"type,omitempty"`
+	// The signature-type value set is defined at http://www.astm.org/
+	// Codes from urn:iso-astm:E1762-95:2013 in https://www.hl7.org/fhir/valueset-signature-type.html
+    Type                []Coding      `bson:"type,omitempty" json:"type,omitempty"`
 	When                *FHIRDateTime `bson:"when,omitempty" json:"when,omitempty"`
-	WhoUri              string        `bson:"whoUri,omitempty" json:"whoUri,omitempty"`
-	WhoReference        *Reference    `bson:"whoReference,omitempty" json:"whoReference,omitempty"`
-	OnBehalfOfUri       string        `bson:"onBehalfOfUri,omitempty" json:"onBehalfOfUri,omitempty"`
-	OnBehalfOfReference *Reference    `bson:"onBehalfOfReference,omitempty" json:"onBehalfOfReference,omitempty"`
-	ContentType         string        `bson:"contentType,omitempty" json:"contentType,omitempty"`
-	Blob                string        `bson:"blob,omitempty" json:"blob,omitempty"`
+    // who[x], whoUri and whoReference changed to who in FHIR R4
+	// WhoUri              string        `bson:"whoUri,omitempty" json:"whoUri,omitempty"`
+    // WhoReference        *Reference    `bson:"whoReference,omitempty" json:"whoReference,omitempty"`
+	Who        *Reference    `bson:"who,omitempty" json:"who,omitempty"`
+	// onBehalfOf[x], onBehalfOfUri and onBehalfOfReference changed to onBehalfOf in FHIR R4
+	// OnBehalfOfUri       string        `bson:"onBehalfOfUri,omitempty" json:"onBehalfOfUri,omitempty"`
+    // OnBehalfOfReference *Reference    `bson:"onBehalfOfReference,omitempty" json:"onBehalfOfReference,omitempty"`
+	OnBehalfOf *Reference    `bson:"onBehalfOf,omitempty" json:"onBehalfOf,omitempty"`
+    // contentType deleted in FHIR R4
+	// ContentType         string        `bson:"contentType,omitempty" json:"contentType,omitempty"`
+    // targetFormat added in FHIR R4
+	TargetFormat         string        `bson:"targetFormat,omitempty" json:"targetFormat,omitempty"`
+    // sigFormat added in FHIR R4
+    SigFormat         string        `bson:"sigFormat,omitempty" json:"sigFormat,omitempty"`
+	//Renamed from blob to data on FHIR R4
+	Data                string        `bson:"data,omitempty" json:"data,omitempty"`
 }
