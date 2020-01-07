@@ -1,4 +1,4 @@
-module fhir-r4-go-models
+module github.com/Universal-Health-Chain/fhir-r4-go-models
 
 go 1.13
 
