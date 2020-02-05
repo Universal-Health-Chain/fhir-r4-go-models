@@ -26,7 +26,9 @@
 
 package models
 
+import "time"
+
 type Period struct {
-	Start *FHIRDateTime `bson:"start,omitempty" json:"start,omitempty"`
-	End   *FHIRDateTime `bson:"end,omitempty" json:"end,omitempty"`
+	Start *time.Time `bson:"start,omitempty" json:"start,omitempty"`
+	End   *time.Time `bson:"end,omitempty" json:"end,omitempty"`
 }
